@@ -1,5 +1,7 @@
 
 import com.astech.lexredupbot.Demo;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * Copyright (C) 2016 user
@@ -24,8 +26,12 @@ import com.astech.lexredupbot.Demo;
 public class TestRedupTest {
 
     public static void testProcessText() {
-        Demo demo = new Demo();
-        System.out.println(demo.processText("best boy in the world"));
+        try {
+            Demo demo = new Demo();
+            System.out.println(demo.processText("best boy in the world"));
+        } catch (Exception ex) {
+            Logger.getLogger(TestRedupTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public static void main(String arg[]) {
