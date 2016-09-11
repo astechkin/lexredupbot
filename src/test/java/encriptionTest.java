@@ -44,7 +44,7 @@ public class encriptionTest {
             // See also Encrypting with DES Using a Pass Phrase.
             SecretKey key = KeyGenerator.getInstance("DES").generateKey();
 
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("key.bin"));
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("testkey.bin"));
             oos.writeObject(key);
             oos.close();
             
@@ -52,7 +52,7 @@ public class encriptionTest {
             DesEncrypter encrypter = new DesEncrypter(key);
 
             // Encrypt
-            String encrypted = encrypter.encrypt("267352059:AAHWCnEJc5G4CfdmHt5T6drYDngfmzJFRq8");
+            String encrypted = encrypter.encrypt("Don't tell anybody!");
             System.out.println(encrypted);
                        
 
