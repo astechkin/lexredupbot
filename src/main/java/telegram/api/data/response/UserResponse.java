@@ -1,9 +1,3 @@
-
-import telegram.api.data.User;
-import telegram.api.data.response.UserResponse;
-import telegram.api.BotApi;
-import telegram.polling.BotApiFactory;
-
 /*
  * Copyright (C) 2016 user
  *
@@ -20,22 +14,27 @@ import telegram.polling.BotApiFactory;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+package telegram.api.data.response;
+
+import telegram.api.data.User;
+import telegram.api.data.response.Response;
 
 /**
  *
  * @author user
  */
-public class TestApiProxyTest {
-
-    String token = TestBotConfig.getBotToken("lexredupbot");
+public class UserResponse extends Response {
     
-    public void testApiProxy() {
-        BotApi api = BotApiFactory.getInstance(token);
-        UserResponse r = api.getMe();
-        System.out.println(r.getResult().getId());
-        System.out.println(r.getResult().getFirst_name());
-        System.out.println(r.getResult().getLast_name());
-        System.out.println(r.getResult().getUsername());
+    User result;
+
+    public User getResult() {
+        return result;
     }
 
+    public void setResult(User result) {
+        this.result = result;
+    }
+
+
+    
 }

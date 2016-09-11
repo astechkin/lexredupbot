@@ -1,9 +1,3 @@
-
-import telegram.api.data.User;
-import telegram.api.data.response.UserResponse;
-import telegram.api.BotApi;
-import telegram.polling.BotApiFactory;
-
 /*
  * Copyright (C) 2016 user
  *
@@ -20,22 +14,31 @@ import telegram.polling.BotApiFactory;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+package telegram.api.data;
 
 /**
  *
  * @author user
  */
-public class TestApiProxyTest {
+class Location {
 
-    String token = TestBotConfig.getBotToken("lexredupbot");
-    
-    public void testApiProxy() {
-        BotApi api = BotApiFactory.getInstance(token);
-        UserResponse r = api.getMe();
-        System.out.println(r.getResult().getId());
-        System.out.println(r.getResult().getFirst_name());
-        System.out.println(r.getResult().getLast_name());
-        System.out.println(r.getResult().getUsername());
+    Float longitude; //Longitude as defined by sender
+    Float latitude; //Latitude as defined by sender
+
+    public Float getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Float longitude) {
+        this.longitude = longitude;
+    }
+
+    public Float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Float latitude) {
+        this.latitude = latitude;
     }
 
 }

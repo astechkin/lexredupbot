@@ -1,5 +1,5 @@
 
-import com.astech.lexredupbot.Demo;
+import com.astech.lexredupbot.LexRedupler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,8 +27,7 @@ public class TestRedupTest {
 
     public static void testProcessText() {
         try {
-            Demo demo = new Demo();
-            System.out.println(demo.processText("best boy in the world"));
+            System.out.println(LexRedupler.processText("best boy in the world"));
         } catch (Exception ex) {
             Logger.getLogger(TestRedupTest.class.getName()).log(Level.SEVERE, null, ex);
         }

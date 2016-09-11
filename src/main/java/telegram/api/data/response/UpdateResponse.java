@@ -1,9 +1,3 @@
-
-import telegram.api.data.User;
-import telegram.api.data.response.UserResponse;
-import telegram.api.BotApi;
-import telegram.polling.BotApiFactory;
-
 /*
  * Copyright (C) 2016 user
  *
@@ -20,22 +14,25 @@ import telegram.polling.BotApiFactory;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+package telegram.api.data.response;
+
+import java.util.List;
+import telegram.api.data.Update;
 
 /**
  *
  * @author user
  */
-public class TestApiProxyTest {
+public class UpdateResponse extends Response {
+    List<Update> result; //to receive incoming updates using long polling (wiki). An Array of Update objects is returned.
 
-    String token = TestBotConfig.getBotToken("lexredupbot");
-    
-    public void testApiProxy() {
-        BotApi api = BotApiFactory.getInstance(token);
-        UserResponse r = api.getMe();
-        System.out.println(r.getResult().getId());
-        System.out.println(r.getResult().getFirst_name());
-        System.out.println(r.getResult().getLast_name());
-        System.out.println(r.getResult().getUsername());
+    public List<Update> getResult() {
+        return result;
     }
 
+    public void setResult(List<Update> result) {
+        this.result = result;
+    }
+    
+    
 }

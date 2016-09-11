@@ -38,7 +38,7 @@
             <assembleDirectory>target</assembleDirectory>
             <programs>
                 <program>
-                    <mainClass>com.astech.lexredupbot.Demo</mainClass>
+                    <mainClass>com.astech.lexredupbot.LexRedupBot</mainClass>
                     <name>worker</name>
                 </program>
             </programs>

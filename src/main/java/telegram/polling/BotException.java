@@ -1,9 +1,3 @@
-
-import telegram.api.data.User;
-import telegram.api.data.response.UserResponse;
-import telegram.api.BotApi;
-import telegram.polling.BotApiFactory;
-
 /*
  * Copyright (C) 2016 user
  *
@@ -20,22 +14,33 @@ import telegram.polling.BotApiFactory;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+package telegram.polling;
 
 /**
  *
  * @author user
  */
-public class TestApiProxyTest {
+public class BotException extends Exception {
 
-    String token = TestBotConfig.getBotToken("lexredupbot");
+    static final long serialVersionUID = 88;
     
-    public void testApiProxy() {
-        BotApi api = BotApiFactory.getInstance(token);
-        UserResponse r = api.getMe();
-        System.out.println(r.getResult().getId());
-        System.out.println(r.getResult().getFirst_name());
-        System.out.println(r.getResult().getLast_name());
-        System.out.println(r.getResult().getUsername());
+    private int code;
+
+    public BotException(String error) {
+        super(error);
+    }
+
+    public BotException(int code, String error) {
+        super(error);
+        this.code = code;
+    }
+
+    public BotException(String error, Throwable origin) {
+        super(error, origin);
+    }
+    
+    public int getCode() {
+        return code;
     }
 
 }

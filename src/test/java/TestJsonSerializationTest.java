@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.telegram.api.Message;
+import telegram.api.data.Message;
 
 /*
  * Copyright (C) 2016 user

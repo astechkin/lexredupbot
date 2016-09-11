@@ -1,9 +1,3 @@
-
-import telegram.api.data.User;
-import telegram.api.data.response.UserResponse;
-import telegram.api.BotApi;
-import telegram.polling.BotApiFactory;
-
 /*
  * Copyright (C) 2016 user
  *
@@ -20,22 +14,33 @@ import telegram.polling.BotApiFactory;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+package telegram.api.data;
+
+import java.util.List;
 
 /**
  *
  * @author user
  */
-public class TestApiProxyTest {
+public class UserProfilePhotos {
 
-    String token = TestBotConfig.getBotToken("lexredupbot");
-    
-    public void testApiProxy() {
-        BotApi api = BotApiFactory.getInstance(token);
-        UserResponse r = api.getMe();
-        System.out.println(r.getResult().getId());
-        System.out.println(r.getResult().getFirst_name());
-        System.out.println(r.getResult().getLast_name());
-        System.out.println(r.getResult().getUsername());
+    Integer total_count; //Total number of profile pictures the target user has
+    List<List<PhotoSize>> photos; //Requested profile pictures (in up to 4 sizes each)
+
+    public Integer getTotal_count() {
+        return total_count;
+    }
+
+    public void setTotal_count(Integer total_count) {
+        this.total_count = total_count;
+    }
+
+    public List<List<PhotoSize>> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<List<PhotoSize>> photos) {
+        this.photos = photos;
     }
 
 }
