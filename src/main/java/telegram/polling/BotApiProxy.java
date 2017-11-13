@@ -47,7 +47,7 @@ import telegram.api.annotation.Param;
 public class BotApiProxy implements InvocationHandler {
 
     private static final Logger LOG = Logger.getLogger(BotApiProxy.class.getName());
-    private static final long MAX_MESSAGE_SIZE = 8192L;
+    private static final long MAX_MESSAGE_SIZE = 32768L;
 
     private String token;
     private ObjectMapper mapper;
@@ -94,7 +94,12 @@ public class BotApiProxy implements InvocationHandler {
             response = httpclient.execute(httpget);
             try {
                 if (response.getStatusLine().getStatusCode() != 200) {
-                    LOG.log(Level.SEVERE, methodName + ": " + response.getStatusLine().getReasonPhrase());
+                    LOG.log(Level.SEVERE, methodName + ": " + response.getStatusLine().getStatusCode() + " " + response.getStatusLine().getReasonPhrase());
+                    HttpEntity entity = response.getEntity();
+                    if (entity != null) {
+                        String strResponse = EntityUtils.toString(entity);
+                        LOG.log(Level.SEVERE, strResponse);
+                    }
                     throw new BotException(response.getStatusLine().getStatusCode(), response.getStatusLine().getReasonPhrase());
                 }
                 HttpEntity entity = response.getEntity();

@@ -20,16 +20,16 @@ import telegram.polling.BotApiFactory;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 /**
  *
  * @author user
  */
 public class TestApiProxyTest {
 
-    String token = TestBotConfig.getBotToken("lexredupbot");
-    
+    String token = BotApiFactory.getBotToken("lexredupbot", "key.bin");
+
     public void testApiProxy() {
+        //System.out.println("Loaded token resouce: " + token);
         BotApi api = BotApiFactory.getInstance(token);
         UserResponse r = api.getMe();
         System.out.println(r.getResult().getId());
